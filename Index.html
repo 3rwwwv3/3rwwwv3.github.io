@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio complementario</title>
+    <link href="bootstrap-5.3.1-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">-->
+    <style>
+        body {
+            background-color: #e0f2f1; /*Cambia este valor para personalizar el color de fondo*/
+        }
+
+        /*Estilo de hover para el botón*/
+        #calcularBtn:hover {
+            background-color: #007bff; /*Cambia el color al pasar el cursor sobre el botón*/
+        }
+        #calcularBtn1:hover {
+            background-color: #00fff2; /*Cambia el color al pasar el cursor sobre el botón*/
+        }
+        #calcularBtn2:hover {
+            background-color: #eeff00; /*Cambia el color al pasar el cursor sobre el botón*/
+        }
+        #calcularBtn3:hover {
+            background-color: #00ff0d; /*Cambia el color al pasar el cursor sobre el botón*/
+        }
+
+        #resultado{
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /*Animación de entrada para el resultado*/
+        #resultado.mostrar {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Calculadora de suma</h1>
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for ="num1" class="form-label">Número 1</label>
+                    <input type="number" class="form-control" 
+                    id="num1" placeholder="Ingresa el primer número">
+                </div>
+                <div class="mb-3">
+                    <label for ="num2" class="form-label">Número 2</label>
+                    <input type="number" class="form-control" 
+                    id="num2" placeholder="Ingresa el segundo número">
+                </div>
+                <button id="calcularBtn" class="btn btn-primary">Sumar</button>
+                <button id="calcularBtn1" class="btn btn-info">Restar</button>
+                <button id="calcularBtn2" class="btn btn-warning">Multiplicar</button>
+                <button id="calcularBtn3" class="btn btn-success">Dividir</button>
+
+                <div class="mt-3">
+                    <h4>Resultado:</h4>
+                    <p id="resultado"></p>
+                </div>
+            </div>
+        </div>        
+    </div>
+    <script src="bootstrap-5.3.1-dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script> -->
+    <script>
+    function sumar() {
+        //Obtiene los valores de los campos de entrada
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+
+        //Verifica que los campos no esten vacíos
+        if(isNaN(num1) || isNaN(num2)) {
+            alert("Por favor, ingresa números válidos en ambos campos.");
+            return;
+        }
+
+        //Realiza la suma
+        let suma = num1 + num2;
+
+        //Muestra el resultado en la página con animación
+        let resultadoElement = document.getElementById("resultado");
+        resultadoElement.innerHTML = "La suma es: " + suma;
+        resultadoElement.classList.add("mostrar");
+
+        //Cambia el color de la alerta según el resultado
+        if (suma > 10) {
+            resultadoElement.className = "alert alert-success mostrar";
+        } else {
+            resultadoElement.className = "alert alert-danger mostrar";
+        }
+    }
+    //Agrega un evento click al botón de calcular
+    document.getElementById("calcularBtn").addEventListener("click", sumar)
+
+    function restar() {
+        //Obtiene los valores de los campos de entrada
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+
+        //Verifica que los campos no esten vacíos
+        if(isNaN(num1) || isNaN(num2)) {
+            alert("Por favor, ingresa números válidos en ambos campos.");
+            return;
+        }
+
+        //Realiza la suma
+        let resta = num1 - num2;
+
+        //Muestra el resultado en la página con animación
+        let resultadoElement = document.getElementById("resultado");
+        resultadoElement.innerHTML = "La resta es: " + resta;
+        resultadoElement.classList.add("mostrar");
+
+        //Cambia el color de la alerta según el resultado
+        if (resta > 10) {
+            resultadoElement.className = "alert alert-success mostrar";
+        } else {
+            resultadoElement.className = "alert alert-danger mostrar";
+        }
+    }
+    //Agrega un evento click al botón de calcular
+    document.getElementById("calcularBtn1").addEventListener("click", restar)
+
+    function multiplicar() {
+        //Obtiene los valores de los campos de entrada
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+
+        //Verifica que los campos no esten vacíos
+        if(isNaN(num1) || isNaN(num2)) {
+            alert("Por favor, ingresa números válidos en ambos campos.");
+            return;
+        }
+
+        //Realiza la suma
+        let multiplicación = num1 * num2;
+
+        //Muestra el resultado en la página con animación
+        let resultadoElement = document.getElementById("resultado");
+        resultadoElement.innerHTML = "La multiplicación es: " + multiplicación;
+        resultadoElement.classList.add("mostrar");
+
+        //Cambia el color de la alerta según el resultado
+        if (multiplicación > 20) {
+            resultadoElement.className = "alert alert-success mostrar";
+        } else {
+            resultadoElement.className = "alert alert-danger mostrar";
+        }
+    }
+    //Agrega un evento click al botón de calcular
+    document.getElementById("calcularBtn2").addEventListener("click", multiplicar)
+
+    function dividir () {
+        //Obtiene los valores de los campos de entrada
+        let num1 = parseFloat(document.getElementById("num1").value);
+        let num2 = parseFloat(document.getElementById("num2").value);
+
+        //Verifica que los campos no esten vacíos
+        if(isNaN(num1) || isNaN(num2)) {
+            alert("Por favor, ingresa números válidos en ambos campos.");
+            return;
+        }
+
+        //Realiza la suma
+        let división = num1 / num2;
+
+        //Muestra el resultado en la página con animación
+        let resultadoElement = document.getElementById("resultado");
+        resultadoElement.innerHTML = "La división es: " + división;
+        resultadoElement.classList.add("mostrar");
+
+        //Cambia el color de la alerta según el resultado
+        if (división > 5) {
+            resultadoElement.className = "alert alert-success mostrar";
+        } else {
+            resultadoElement.className = "alert alert-danger mostrar";
+        }
+    }
+    //Agrega un evento click al botón de calcular
+    document.getElementById("calcularBtn3").addEventListener("click", dividir)
+    </script>
+</body>
+</html>
